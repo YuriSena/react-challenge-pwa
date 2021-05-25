@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { User } from '../../context/User';
 import { Follower } from '../../context/Follower';
@@ -14,6 +14,7 @@ function Dashboard() {
   const history = useHistory();
   const { user, setUser } = useContext(User);
 	const { follower, setFollower } = useContext(Follower);
+	const [followerName, setFollowerName] = useState("SEM NOME");
   console.log(user);
 
   const handleLogout = () => {
@@ -28,7 +29,13 @@ function Dashboard() {
 }
 
 	useEffect(() => {
-    console.log(follower);
+    if(follower && follower.name) {
+			setFollowerName(follower.name);
+		}else if(user && user.name){
+			setFollowerName(user.name);
+		}else {
+			setFollowerName("SEM NOME");
+		}
   }, [follower]);
 
   return (
@@ -48,7 +55,7 @@ function Dashboard() {
             <img src={follower ? follower.avatar_url : user.avatar_url} alt="avatar" />
             
             <div id="user-contact-container">
-                <h2>{(follower ? follower.name ? follower.name.toUpperCase() : user.name ? user.name.toUpperCase() : "Sem nome".toUpperCase() : "Sem nome".toUpperCase())}</h2>
+                <h2>{followerName.toUpperCase()}</h2>
                 <span>{follower ? follower.email : user.email ? user.email : "email privado"}</span>
                 <span>{follower ? follower.location : user.location}</span>
             </div>
