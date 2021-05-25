@@ -1,0 +1,26 @@
+
+#main-container {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+}
+
+#button-container {
+    display: flex;
+    width: 500px;
+    margin: 3em;
+    flex-direction: column; 
+}
+
+button {
+    margin-bottom: 1em;
+    height: 40px;
+    background-color: black;
+    color: white;
+    border: 1px solid;
+    border-radius: 5px;
+}
