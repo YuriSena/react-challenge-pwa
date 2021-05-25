@@ -14,7 +14,7 @@ function Dashboard() {
   const history = useHistory();
   const { user, setUser } = useContext(User);
 	const { follower, setFollower } = useContext(Follower);
-	const [followerName, setFollowerName] = useState("SEM NOME");
+	const [followerName, setFollowerName] = useState('');
   console.log(user);
 
   const handleLogout = () => {
